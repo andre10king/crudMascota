@@ -35,6 +35,21 @@ namespace CRUDdatosmascota.Controllers
 
         }
 
+        //metodo eliminar
+
+        [ResponseType(typeof(Mascota))]
+        public IHttpActionResult DeleteMascota(int id)
+        {
+            Mascota mascota = db.Mascota.Find(id);
+            if(mascota ==null)
+            {
+                return NotFound();
+
+            }
+            db.Mascota.Remove(mascota);
+            db.SaveChanges();
+            return Ok(mascota);
+        }
 
 
 
